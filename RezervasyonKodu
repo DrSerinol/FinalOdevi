@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+public class OtelRezervasyonSistemi {
+
+		    public static void main(String[] args) {
+		        String[] odalar = new String[10];
+		        Scanner input = new Scanner(System.in);
+
+		        while (true) {
+		            System.out.println("\n--- Otel Rezervasyon ---");
+		            System.out.println("1. Rezervasyon Yap");
+		            System.out.println("2. Oda Durumlarını Görüntüle"); 
+		            System.out.println("0. Çıkış");
+		            System.out.print("Seçiminiz: ");
+		            int secim = input.nextInt();
+		            input.nextLine(); 
+
+		            if (secim == 1) {
+		                System.out.print("Hangi odayı rezerve etmek istiyorsunuz (1-10): ");
+		                int odaNo = input.nextInt();
+		                input.nextLine(); 
+
+		                if (odaNo >= 1 && odaNo <= 10) {
+		                    if (odalar[odaNo - 1] == null) {
+		                        System.out.print("Misafir adı: ");
+		                        String isim = input.nextLine();
+		                        odalar[odaNo - 1] = isim;
+		                        System.out.println("Rezervasyon yapıldı.");
+		                    } else {
+		                        System.out.println("Bu oda zaten dolu.");
+		                    }
+		                } else {
+		                    System.out.println("Geçersiz oda numarası.");
+		                }
+
+		            } else if (secim == 2) {
+		                System.out.println("\n--- Oda Durumları ---");
+		                for (int i = 0; i < odalar.length; i++) {
+		                    if (odalar[i] == null) {
+		                        System.out.println((i + 1) + ". Oda - Boş");
+		                    } else {
+		                        System.out.println((i + 1) + ". Oda - Dolu (Misafir: " + odalar[i] + ")");
+		                    }
+		                }
+
+		            } else if (secim == 0) {
+		                System.out.println("Programdan çıkılıyor...");
+		                break;
+
+		            } else {
+		                System.out.println("Geçersiz seçim.");
+		            }
+		        }
+
+		        input.close();
+		    }
+		}
+
+
+
+
